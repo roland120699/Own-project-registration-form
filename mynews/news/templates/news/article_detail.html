@@ -1,0 +1,10 @@
+{% extends 'default.html' %}
+
+{% block content %}
+  <h2>{{ article.title | censor }}</h2>
+  <p>Date: {{ article.pub_date|date:"d.m.Y" }}</p>
+  <p>{{ article.content | censor }}</p>
+
+  <a href="{% url 'article_update' pk=article.pk %}">Редактировать</a>
+  <a href="{% url 'article_delete' pk=article.pk %}">Удалить</a>
+{% endblock %}

@@ -1,0 +1,33 @@
+<a href="{% url 'news_create' %}">Создать новость</a>
+<a href="{% url 'article_create' %}">Создать статью</a>
+
+<form method="get" class="form">
+    {{ filter.form.title }}
+    {{ filter.form.category }}
+    <button type="submit">Search</button>
+</form>
+
+{% for item in news %}
+    {# Отображение каждой новости #}
+    <h2>{{ item.title }}</h2>
+    <p>{{ item.content }}</p>
+    {# Добавьте другие поля новости по необходимости #}
+{% endfor %}
+
+<div class="paginator">
+    <span class="step_links">
+        {% if news.has_previous %}
+            <a href="?page=1{% if request.GET.title %}&title={{ request.GET.title }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">&laquo; first</a>
+            <a href="?page={{ news.previous_page_number }}{% if request.GET.title %}&title={{ request.GET.title }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Страница {{ news.number }} из {{ news.paginator.num_pages }}.
+        </span>
+
+        {% if news.has_next %}
+            <a href="?page={{ news.next_page_number }}{% if request.GET.title %}&title={{ request.GET.title }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">next</a>
+            <a href="?page={{ news.paginator.num_pages }}{% if request.GET.title %}&title={{ request.GET.title }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>

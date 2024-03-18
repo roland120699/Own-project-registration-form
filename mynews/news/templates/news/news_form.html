@@ -1,0 +1,15 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <h1>{% if form.instance.pk %}Edit News{% else %}Create News{% endif %}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+
+    {% if form.instance.pk %}
+        <a href="{% url 'article_edit' pk=article.pk %}">Edit</a>
+    {% endif %}
+{% endblock %}

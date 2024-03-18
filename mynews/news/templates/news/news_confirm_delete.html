@@ -1,0 +1,14 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+    <h1>Delete News</h1>
+
+    <p>Вы уверены что хотите удалить новость "{{ object }}"?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm</button>
+    </form>
+
+    <a href="{% url 'news_list' %}">Cancel</a>
+{% endblock %}

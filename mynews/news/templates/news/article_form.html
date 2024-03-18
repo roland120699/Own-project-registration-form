@@ -1,0 +1,15 @@
+<!-- templates/news/article_form.html -->
+
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>{% if form.instance.pk %}Edit Article{% else %}Create Article{% endif %}</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+
+  <a href="{% url 'news_list' %}">Cancel</a>
+{% endblock %}

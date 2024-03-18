@@ -1,0 +1,18 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Поиск новостей</h1>
+  <form method="get" action="{% url 'news_search' %}">
+    {{ filter.form.as_p }}
+    <button type="submit">Искать</button>
+  </form>
+
+  {% for item in filter.qs %}
+    {# Отображение результатов поиска #}
+    <h2>{{ item.title }}</h2>
+    <p>{{ item.content }}</p>
+    {# Добавьте другие поля новости по необходимости #}
+  {% empty %}
+    <p>Нет результатов</p>
+  {% endfor %}
+{% endblock %}

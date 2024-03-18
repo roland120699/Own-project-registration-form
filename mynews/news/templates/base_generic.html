@@ -1,0 +1,25 @@
+<!-- base_generic.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Site{% endblock %}</title>
+    <!-- Дополнительные мета-теги, стили и скрипты -->
+</head>
+<body>
+
+<div id="header">
+    <h1>{% block header %}My Site{% endblock %}</h1>
+    <!-- Навигационное меню и другие элементы шапки -->
+</div>
+
+<div id="content">
+    {% block content %}{% endblock %}
+    <!-- Основное содержание страницы -->
+</div>
+
+<div id="footer">
+    <!-- Футер и другие элементы нижней части страницы -->
+</div>
+
+</body>
+</html>
